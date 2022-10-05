@@ -2,6 +2,12 @@
 #include <string.h>
 #include <stdlib.h>
 
+void __swap(int *a,int *b){
+  int tmp = *b;
+  *b = *a;
+  *a = tmp;
+}
+
 short __chercherDichotomie(int *ptrTableau, int size, int value){
   if(size <= 1){
     return *ptrTableau == value;
@@ -45,13 +51,6 @@ void __tri(int *ptrTableau, int size){
   }
 }
 
-void __swap(int *a,int *b){
-  int tmp = *b;
-  *b = *a;
-  *a = tmp;
-}
-
-
 void __printTableau(int *ptrTableau, int size){
   printf("[");
   for (short i = 0; i < size; i++) {
@@ -66,13 +65,13 @@ void __printTableau(int *ptrTableau, int size){
 }
 
 void __printHexa(void* variable, int size){
-  printf("%d\n", size);
+  // printf("%d\n", sizeof(*variable));
   unsigned char *ptrChar = variable + size;
   for (int i = size; i > 0; i--) {
     ptrChar--;
-    printf(" %02x", *ptrChar);
+    printf("%02x ", *ptrChar);
   }
-  printf("\n");
+  // printf("\n");
 }
 
 short __chercher(int *ptrTableau, int size, int value){

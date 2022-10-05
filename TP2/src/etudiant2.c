@@ -28,8 +28,8 @@ void initEtudiant(struct Etudiant *et){
   strcpy(et->prenom, "Hugues");
   strcpy(et->nom, "Farthouat");
   strcpy(et->adresse, "qqp en France, à Villeurbanne");
-  et->notes[0]=16;
-  et->notes[1]=15;
+  et -> notes[0]=16;
+  et -> notes[1]=15;
 }
 void printEtudiant(struct Etudiant et){
   printf("%s %s\n", et.prenom,et.nom);

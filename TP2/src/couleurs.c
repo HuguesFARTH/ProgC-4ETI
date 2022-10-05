@@ -15,7 +15,6 @@ int main() {
   srand((unsigned)time(&t));
   int size = (int)(sizeof(colors)/(sizeof(char)*4));
   for(int i = 0; i < size; i++){
-    time(&t);
     int random = rand();
     colors[i].r=(char)random;
     colors[i].g=(char)random>>2;

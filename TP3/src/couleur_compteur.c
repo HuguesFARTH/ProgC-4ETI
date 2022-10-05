@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <stdlib.h>
 #include "tplib.c"
+#include "hashmap.c"
 
 
 struct Color{
@@ -17,33 +17,48 @@ int calcColor(struct Color *color);
 struct Color colorFromCalc(int calc);
 
 int main() {
-  struct Color colors[100];
+  int size = 100;
+  struct Color *colors = malloc(size*4*1);
   time_t t;
   srand((unsigned)time(&t));
-  int size = (int)(sizeof(colors)/(sizeof(char)*4));
+  short numberOfAllowedColors = 5;
+  int *colorsAllowed = malloc(numberOfAllowedColors * sizeof(int));
+  for(int i = 0; i < numberOfAllowedColors; i++){
+    *(colorsAllowed+i) = rand();
+    // printf("%d,\n",*(colorsAllowed+i));
+  }
+  // printf("\n");
   for(int i = 0; i < size; i++){
-    time(&t);
-    int random = rand();
+    int random = *(colorsAllowed+(rand()%numberOfAllowedColors));
     colors[i].r=(char)random;
     colors[i].g=(char)random>>2;
     colors[i].b=(char)random>>4;
     colors[i].a=(char)random>>6;
+    // printColor(colors[i]);
   }
-  printf("Couleur r=%#02x, g=%#02x, b=%#02x, a=%#02x\n",colors[0].r,colors[0].g,colors[0].b,colors[0].a);
-  int calc = calcColor(&colors[0]);
-  struct Color color = colorFromCalc(calc);
-  printf("Couleur r=%#02x, g=%#02x, b=%#02x, a=%#02x\n",color.r,color.g,color.b,color.a);
 
-  // int results[100][4] = malloc(100*sizeof(int)*sizeof(int));
 
-  // struct Color colorsv2[100] = colors;
-  // for(int i = 0, i < size; i++){
-  //   int calc = calcColor(colorsv2[i]);
-  //
-  // }
+  HASHMAP map = createHashMap();
+  // printHashMap(&map);
+  for(int i = 0; i < size; i++){
+    struct Color color = colors[i];
+    int c = calcColor(&color);
+    putHashMapInc(&map,c,1,1);
+  }
+  // printHashMap(&map);
+  printf("\n---------Résultat---------\n");
+  printf("\n");
+  for (int i = 0; 0 < map.size; i++) {
+    ENTRY ent = getFirstEntryHashMap(&map);
+    printf("key:%u value:%u\n", ent.key,ent.value);
+    __printHexa(&ent.key,4);
+    printf(": %i\n",ent.value);
+    removeHashMap(&map,ent.key);
+    printf("\n");
+  }
+  printf("--------------------------\n");
   return 0;
 }
-
 
 short compareColors(struct Color *c1,struct Color *c2){
   return calcColor(c1) == calcColor(c2);
@@ -51,11 +66,14 @@ short compareColors(struct Color *c1,struct Color *c2){
 
 int calcColor(struct Color *color){
   int value = 0;
-  int *ptrValue = &value;
-  ptrValue = color;
+  int *ptrValue = color;
   value = *ptrValue;
-  __printHexa(&value,sizeof(value));
+  // __printHexa(&value,sizeof(value));
   return value;
+}
+
+void printColor(struct Color color){
+    printf("Couleur r=%#02x, g=%#02x, b=%#02x, a=%#02x\n", color.r,color.g,color.b,color.a);
 }
 
 struct Color colorFromCalc(int calc){
