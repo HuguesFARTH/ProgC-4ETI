@@ -7,6 +7,8 @@
 *.obj
 *.elf
 *.exe
+*.stackdump
+
 
 # Linker output
 *.ilk
