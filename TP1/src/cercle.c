@@ -7,6 +7,7 @@ double aire(double rayon);
 
 double perimetre(double rayon);
 
+// Possibilité de passer en paramètre le rayon
 int main(int argc, char **argv) {
   double rayon = 1;
   if(argv[1]){

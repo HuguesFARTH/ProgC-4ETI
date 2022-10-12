@@ -4,6 +4,7 @@
 #include <limits.h>
 
 void chercher(int *ptrTableau, int size, int value);
+void chercher2(char **ptrTableau, char* phrase);
 
 int main() {
   time_t t;
@@ -25,7 +26,8 @@ int main() {
   }
   printf("]\n");
   chercher(&tableauInt, size,10);
-
+  char* tableauChar[4]= {"Petite phrase n°1","Petite phrase n°2","Petite phrase n°3","Petite phrase n°4","Petite phrase n°5"};
+  chercher2(&tableauChar,"Petite phrase n°2");
 }
 
 void chercher(int *ptrTableau, int size, int value){
@@ -36,4 +38,15 @@ void chercher(int *ptrTableau, int size, int value){
     }
     ptrTableau ++;
   }
+}
+
+void chercher2(char **ptrTableau, char* phrase){
+  for (int i = 0; i < 4; i++) {
+    if((phrase == *(ptrTableau+i))){
+      printf("Phrase retrouvée dans le tableau (index=%d)",i);
+      return;
+    }
+  }
+  printf("Phrase non présente dans le tableau");
+  return;
 }

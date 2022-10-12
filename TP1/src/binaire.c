@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <limits.h>
-#include <unistd.h>
 
 void printIntToBinairy(int number);
 
