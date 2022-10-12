@@ -1,16 +1,36 @@
 #include <stdio.h>
 
-int main() {
-  int varInt = 0xa47865ff;
-  printf("---i: %x---\n", (varInt));
-  float varFloat = 1;
-  float *ptrFloat = &varFloat;
-  unsigned char *ptrChar = ptrFloat;
-  printf("testBla\n");
-  for (int i = 0; i < 4; i++) {
-    printf("%#02x\n",*ptrChar);
-    ptrChar++;
+void __printHexa(void* variable, int size){
+  // printf("%d\n", sizeof(*variable));
+  unsigned char *ptrChar = variable + size;
+  for (int i = size; i > 0; i--) {
+    ptrChar--;
+    printf("%02x ", *ptrChar);
   }
-  printf("\n");
-  return 0;
+   printf("\n");
+}
+
+int main() {
+    int varInt = 0xa47865ff;
+    printf("i: ");
+    __printHexa(&varInt, sizeof(varInt));
+    
+    float varFloat = 2;
+    printf("f: ");
+    __printHexa(&varFloat, sizeof(varFloat));
+    
+    short varShort = 32;
+    printf("s: ");
+    __printHexa(&varShort, sizeof(varShort));
+    
+    long int varLongInt = 0x87999577f42603;
+    printf("li: ");
+    __printHexa(&varLongInt, sizeof(varLongInt));
+    
+    double varDouble = 7646.45556;
+    printf("d: ");
+    __printHexa(&varDouble, sizeof(varDouble));
+    
+    
+    return 0;
 }
