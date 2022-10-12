@@ -1,7 +1,7 @@
 # Bibliothèques
 * stdio.h
 * stdlib.h
-* errno.h
+* time.h
 
 # Références
 * https://stackoverflow.com/
@@ -11,4 +11,4 @@
 * Facile
 
 # Commentaires
-* Possibilité de passer le rayon en paramètre pour cercle.c
+*
