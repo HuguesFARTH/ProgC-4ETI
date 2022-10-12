@@ -14,4 +14,4 @@
 * Moyen
 
 # Commentaires
-*
+* Pour l'exercice "couleur_compteur.c" nous avons créé un semblant de map. C'était un très bon exercice sur la compréhension de l'allocution mémoire.
