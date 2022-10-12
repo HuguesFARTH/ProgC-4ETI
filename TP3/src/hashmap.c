@@ -9,6 +9,7 @@ typedef struct{
 } ENTRY;
 
 typedef struct{
+  //pas encore utilisé
   int maxSize;
   int size;
   ENTRY *entry;
