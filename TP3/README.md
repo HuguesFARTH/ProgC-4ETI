@@ -9,6 +9,7 @@
 # Références
 * https://stackoverflow.com/
 * Cours
+* https://github.com/HuguesFARTH/ProgC-4ETI
 
 # Difficulté
 * Moyen

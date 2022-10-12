@@ -22,14 +22,13 @@ int main() {
   printf("-------Calcule-------\n");
   for (short i = 0; i < size; i++) {
     tmp = tableauInt[i];
-    printf("%d\n", tmp > max);
     if(tmp > max){
       max = tmp;
-      printf("Max: %d\n", tmp > max);
+      //printf("Max: %d\n", tmp > max);
     }
     if(tmp < min){
       min = tmp;
-      printf("Min: %d\n", min);
+      //printf("Min: %d\n", min);
     }
     ptrInt+=1;
   }
