@@ -71,7 +71,7 @@ void __printHexa(void* variable, int size){
     ptrChar--;
     printf("%02x ", *ptrChar);
   }
-  // printf("\n");
+  printf("\n");
 }
 
 short __chercher(int *ptrTableau, int size, int value){
