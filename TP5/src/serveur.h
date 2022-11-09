@@ -14,6 +14,8 @@
  * envoyées par le client. En suite, le serveur envoie un message
  * en retour
  */
-int recois_envoie_message(int socketfd);
+int recois_envoie_message(int socketf,int client_socket_fd, char *data);
+
+int recois_numeros_calcule(int socketfd,int client_socket_fd, char *data);
 
 #endif

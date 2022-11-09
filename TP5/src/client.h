@@ -19,4 +19,7 @@
  */
 int envoie_recois_message(int socketfd);
 
+int envoie_operateur_numeros(int socketfd, int choice, int V1, int V2);
+
+void viderBuffer(void);
 #endif
